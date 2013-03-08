@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msgs" />
+		<p:panel header="Create a new User">
+			<h:panelGrid columns="2" id="grid">
+				<h:outputLabel value="Name : *" for="txt_name" />
+				<p:inputText id="txt_name" value="#{personBean.person.name}"
+					required="true" />
+
+				<h:outputLabel value="age : *" for="txt_age" />
+				<p:inputText id="txt_age" required="true"
+					value="#{personBean.person.age}" />
+
+				<p:commandButton value="Reset" type="reset" />
+				<p:commandButton id="btn_add" value="Add"
+					action="#{personBean.savePerson}" />
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

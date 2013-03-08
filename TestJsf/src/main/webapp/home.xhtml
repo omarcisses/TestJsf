@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:outputPanel id="users">
+			<p:dataTable id="usersTable" value="#{personBean.allPersons}"
+				var="person">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<p:commandLink action="#{personBean.editPerson}">
+						<h:outputText value="#{person.name}" />
+						<f:setPropertyActionListener target="#{personBean.person}"
+							value="#{person}" />
+					</p:commandLink>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Age" />
+					</f:facet>
+					<p:commandLink action="#{personBean.editPerson}">
+						<h:outputText value="#{person.age}" />
+						<f:setPropertyActionListener target="#{personBean.person}"
+							value="#{person}" />
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</p:outputPanel>
+		<p:commandButton value="Create New User"
+			action="#{personBean.newPerson}" />
+	</h:form>
+</h:body>
+</html>

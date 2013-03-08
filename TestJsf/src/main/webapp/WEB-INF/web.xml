@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<!-- JSF -->
+	<context-param>
+       <param-name>javax.faces.PROJECT_STAGE</param-name>
+       <param-value>Development</param-value>
+   </context-param>
+	<servlet>
+		<servlet-name>facesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<!-- Pretty FACES -->
+	
+	<filter>
+		<filter-name>Pretty Filter</filter-name>
+		<filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Pretty Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
+	
+	<!-- SPRING -->
+	
+	<listener>
+    <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+	<!-- Lets the bean definition file specify scopes of request and session. -->
+  <listener>
+    <listener-class>
+      org.springframework.web.context.request.RequestContextListener
+    </listener-class>
+  </listener>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
